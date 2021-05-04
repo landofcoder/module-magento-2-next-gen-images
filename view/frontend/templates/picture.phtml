@@ -1,0 +1,38 @@
+<?php declare(strict_types=1);
+
+use Lof\NextGenImages\Block\Picture;
+
+/** @var $block Picture */
+$width = ($block->getWidth()) ? ' width="' . $block->getWidth() . '"' : '';
+$height = ($block->getHeight()) ? ' height="' . $block->getHeight() . '"' : '';
+$class = ($block->getClass()) ? ' class="' . $block->getClass() . '"' : '';
+$lazyLoading = ($block->getLazyLoading()) ? ' loading="lazy" ' : '';
+
+$originalTag = trim($block->getOriginalTag());
+$originalTag = preg_replace('/(\/?)>$/', $lazyLoading . '\1>', $originalTag);
+
+$originalImage = $block->getOriginalImage();
+$originalImageType = $block->getOriginalImageType();
+
+$srcsetAttribute = $block->getIsDataSrc() ? 'data-srcset' : 'srcset';
+?>
+<?php if ($block->getDebug()): ?>
+    <!-- <?= /* @noEscape */
+    $block->getOriginalTag() ?> -->
+<?php endif; ?>
+
+<picture<?= /* @noEscape */
+$class ?>>
+    <?php foreach ($block->getSourceImages() as $sourceImage): ?>
+        <source type="<?= /* @noEscape */
+        $sourceImage->getMimeType() ?>" <?= /* @noEscape */
+        $srcsetAttribute ?>="<?= /* @noEscape */
+        $sourceImage->getUrl() ?>">
+    <?php endforeach; ?>
+    <source type="<?= /* @noEscape */
+    $originalImageType ?>" <?= /* @noEscape */
+    $srcsetAttribute ?>="<?= /* @noEscape */
+    $originalImage ?>">
+    <?= /* @noEscape */
+    $originalTag ?>
+</picture>
