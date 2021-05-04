@@ -20,7 +20,7 @@ A module `Foo_Bar` could add a `etc/di.xml` file to add a new convertor (a class
 </config>
 ```
 
-- The module was forked from [Yireo_NextGenImages](https://github.com/lof/Lof_NextGenImages) to update features and fix issues.
+- The module was forked from [Yireo_NextGenImages](https://github.com/yireo/Yireo_NextGenImages) to update features and fix issues.
 # Roadmap
 - Add more next gen image formats
     - JPEG 2000
