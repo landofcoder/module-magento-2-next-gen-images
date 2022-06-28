@@ -59,7 +59,14 @@ class HtmlReplacer
             return $html;
         }
 
+        $ignoreImageHasClass = $this->config->enabledIgnoreClass();
+        $ignoreCssClass = $this->config->getIgnoreClass();
+
         foreach ($matches[0] as $index => $match) {
+            $imageTagClass = $matches[1][$index];
+            if ($ignoreImageHasClass && !empty($ignoreCssClass) && strpos( $imageTagClass, "class=") != false && strpos($imageTagClass, $ignoreCssClass) >= 0) {
+                continue;
+            }
             $nextTag = $matches[7][$index] . $matches[8][$index];
             $fullSearchMatch = $matches[0][$index];
             $imageUrl = $matches[3][$index] . '.' . $matches[4][$index];
@@ -168,6 +175,7 @@ class HtmlReplacer
         /** @var Picture $block */
         $block = $layout->createBlock(Picture::class);
         $block->setDebug($this->config->isDebugging());
+        $block->setModuleConfig($this->config);
         return $block;
     }
 

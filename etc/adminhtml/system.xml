@@ -14,6 +14,15 @@
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="enable_ignore_image" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enabled Ignore Images use css Class</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ignore_css_class" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+					<label>Ignore Css Class</label>
+                    <comment>Input css class name to ignore convert images. Add css class name for img tag to ignore convert this image. Default: ignore-webp</comment>
+					<depends><field id="enable_ignore_image">1</field></depends>
+				</field>
                 <field id="debug" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Debugging</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>

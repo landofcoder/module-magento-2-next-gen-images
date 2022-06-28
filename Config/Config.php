@@ -44,6 +44,22 @@ class Config implements ArgumentInterface
     /**
      * @return bool
      */
+    public function enabledIgnoreClass(): bool
+    {
+        return (bool)$this->scopeConfig->getValue('lof_nextgenimages/settings/enable_ignore_image');
+    }
+
+    /**
+     * @return string
+     */
+    public function getIgnoreClass()
+    {
+        return $this->scopeConfig->getValue('lof_nextgenimages/settings/ignore_css_class');
+    }
+
+    /**
+     * @return bool
+     */
     public function allowImageCreation(): bool
     {
         return (bool)$this->scopeConfig->getValue('lof_nextgenimages/settings/convert_images');

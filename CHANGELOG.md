@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 28 June 2022
+### New Config
+- New config "Enabled Ignore Images use css Class", "Ignore Css Class"
+- Enable ignore images config allow ignore image tag have ignore css class (example: ``<img src="https://host/media/image.png" class="ignore-webp"/>``)
+
 ## [0.2.1] - 9 March 2021
 ### Fixed
 - Fix Dummy convertor to prevent compilation error

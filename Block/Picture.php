@@ -64,6 +64,11 @@ class Picture extends Template
     private $isDataSrc = false;
 
     /**
+     * @var mixed|object
+     */
+    private $config = null;
+
+    /**
      * @return SourceImage[]
      */
     public function getSourceImages(): array
@@ -218,6 +223,22 @@ class Picture extends Template
     }
 
     /**
+     * @param mixed|object $config
+     */
+    public function setModuleConfig($config)
+    {
+        $this->config = $config;
+    }
+
+    /**
+     * @return mixed|object
+     */
+    public function getModuleConfig()
+    {
+        return $this->config;
+    }
+
+    /**
      * @return string
      */
     public function getClass(): string
@@ -273,5 +294,22 @@ class Picture extends Template
         $this->isDataSrc = $isDataSrc;
 
         return $this;
+    }
+
+    /**
+     * @param string $imageTagClass
+     * @return bool
+     */
+    public function checkIgnoreClass($imageTagClass): bool
+    {
+        $config = $this->getModuleConfig();
+        if ($config && $imageTagClass) {
+            $ignoreImageHasClass = $config->enabledIgnoreClass();
+            $ignoreCssClass = $config->getIgnoreClass();
+            if ($ignoreImageHasClass && !empty($ignoreCssClass) && strpos($imageTagClass, $ignoreCssClass) >= 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }
