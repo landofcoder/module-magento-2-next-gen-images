@@ -3,9 +3,10 @@
 use Lof\NextGenImages\Block\Picture;
 
 /** @var $block Picture */
+$tagClass = $block->getClass();
 $width = ($block->getWidth()) ? ' width="' . $block->getWidth() . '"' : '';
 $height = ($block->getHeight()) ? ' height="' . $block->getHeight() . '"' : '';
-$class = ($block->getClass()) ? ' class="' . $block->getClass() . '"' : '';
+$class = ($tagClass) ? ' class="' . $tagClass . '"' : '';
 $lazyLoading = ($block->getLazyLoading()) ? ' loading="lazy" ' : '';
 
 $originalTag = trim($block->getOriginalTag());
@@ -15,12 +16,13 @@ $originalImage = $block->getOriginalImage();
 $originalImageType = $block->getOriginalImageType();
 
 $srcsetAttribute = $block->getIsDataSrc() ? 'data-srcset' : 'srcset';
+$isIgnoreClass = $block->checkIgnoreClass($tagClass);
 ?>
 <?php if ($block->getDebug()): ?>
     <!-- <?= /* @noEscape */
     $block->getOriginalTag() ?> -->
 <?php endif; ?>
-
+<?php if (!$isIgnoreClass) : ?>
 <picture<?= /* @noEscape */
 $class ?>>
     <?php foreach ($block->getSourceImages() as $sourceImage): ?>
@@ -36,3 +38,6 @@ $class ?>>
     <?= /* @noEscape */
     $originalTag ?>
 </picture>
+<?php else: ?>
+<?= /* @noEscape */ $block->getOriginalTag() ?>
+<?php endif; ?>
