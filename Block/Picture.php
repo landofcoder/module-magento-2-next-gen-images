@@ -312,4 +312,14 @@ class Picture extends Template
         }
         return false;
     }
+
+    /**
+     * is allow replace original image type (jpg/png to webp)
+     * @return bool
+     */
+    public function isReplaceOriginalImage()
+    {
+        $config = $this->getModuleConfig();
+        return $config && $config->isReplaceOriginalImage() ? true : false;
+    }
 }
