@@ -105,6 +105,14 @@ class Config implements ArgumentInterface
     /**
      * @return bool
      */
+    public function isReplaceOriginalImage(): bool
+    {
+        return (bool)$this->scopeConfig->getValue('lof_nextgenimages/settings/allow_replace_org_image');
+    }
+
+    /**
+     * @return bool
+     */
     public function isLogging(): bool
     {
         return (bool)$this->scopeConfig->getValue('lof_nextgenimages/settings/log');

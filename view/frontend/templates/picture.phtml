@@ -35,6 +35,11 @@ $class ?>>
     $originalImageType ?>" <?= /* @noEscape */
     $srcsetAttribute ?>="<?= /* @noEscape */
     $originalImage ?>">
+    <?php
+    if ($block->isReplaceOriginalImage()) {
+        $originalTag = str_replace([".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG"], ".webp", $originalTag);
+    }
+    ?>
     <?= /* @noEscape */
     $originalTag ?>
 </picture>
