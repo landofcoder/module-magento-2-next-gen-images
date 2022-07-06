@@ -47,22 +47,23 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment><![CDATA[Add <code>loading="lazy"</code> attribute, which is supported by some browsers]]></comment>
                 </field>
-                <field id="php_version" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>PHP version</label>
-                    <frontend_model>Lof\NextGenImages\Block\Adminhtml\System\Config\PhpVersion</frontend_model>
-                </field>
-                <field id="module_version" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Module version</label>
-                    <frontend_model>Lof\NextGenImages\Block\Adminhtml\System\Config\ModuleVersion</frontend_model>
-                </field>
-                <field id="gd" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>GD support</label>
-                    <frontend_model>Lof\NextGenImages\Block\Adminhtml\System\Config\Gd</frontend_model>
-                </field>
                 <field id="allow_replace_org_image" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Allow Replace Original Image Type to Webp</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+                <field id="php_version" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>PHP version</label>
+                    <frontend_model>Lof\NextGenImages\Block\Adminhtml\System\Config\PhpVersion</frontend_model>
+                </field>
+                <field id="module_version" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Module version</label>
+                    <frontend_model>Lof\NextGenImages\Block\Adminhtml\System\Config\ModuleVersion</frontend_model>
+                </field>
+                <field id="gd" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>GD support</label>
+                    <frontend_model>Lof\NextGenImages\Block\Adminhtml\System\Config\Gd</frontend_model>
+                </field>
+
             </group>
         </section>
     </system>
