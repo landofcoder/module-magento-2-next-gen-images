@@ -23,6 +23,13 @@ $isIgnoreClass = $block->checkIgnoreClass($tagClass);
     $block->getOriginalTag() ?> -->
 <?php endif; ?>
 <?php if (!$isIgnoreClass) : ?>
+<?php if ($block->isReplaceOriginalImage()) : ?>
+<?php
+$originalTag = str_replace([".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG"], ".webp", $originalTag);
+?>
+<?= /* @noEscape */
+$originalTag ?>
+<?php else: ?>
 <picture<?= /* @noEscape */
 $class ?>>
     <?php foreach ($block->getSourceImages() as $sourceImage): ?>
@@ -35,14 +42,10 @@ $class ?>>
     $originalImageType ?>" <?= /* @noEscape */
     $srcsetAttribute ?>="<?= /* @noEscape */
     $originalImage ?>">
-    <?php
-    if ($block->isReplaceOriginalImage()) {
-        $originalTag = str_replace([".png", ".PNG", ".jpg", ".JPG", ".jpeg", ".JPEG"], ".webp", $originalTag);
-    }
-    ?>
     <?= /* @noEscape */
     $originalTag ?>
 </picture>
+<?php endif; ?>
 <?php else: ?>
 <?= /* @noEscape */ $block->getOriginalTag() ?>
 <?php endif; ?>
